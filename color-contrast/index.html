@@ -1,45 +1,76 @@
 <!doctype html>
-<title>Axe Test Cases: Color Contrast</title>
-<style>
-	div {
-		padding: 10px;
-		margin: 10px;
-		float: left;
-		min-height: 100px;
-		min-width: 100px;
-	}
-	#background {
-		background-color: #0f0;
-		color: #0f0;
-	}
-	#black {
-		background-color: #000000;
-	}
-	#green {
-		background-color: rgba(0,255,0,0);
-	}
-	#green2 {
-		background-color: rgba(0,255,0,0.5);
-	}
-	#offscreen {
-		text-indent: -9999em;
-	}
-	.semiopaque {
-		background-color: rgba(0,255,0,0.25);
-	}
-</style>
-<div id="background">
-	<div id="black">
-		<div id="green">this should pass</div>
-		<div id="green2">this should fail</div>
-		<div class="semiopaque">
-			<div>this should pass</div>
+<!--
+Intended outcome: 3 failures, each with text 'this should fail'
+-->
+<head>
+	<title>Axe Test Cases: Color Contrast</title>
+	<style>
+		body {
+			background-color: #fff;
+		}
+		div {
+			padding: 10px;
+			margin: 10px;
+			min-height: 100px;
+			min-width: 100px;
+			float: left;
+			clear: left;
+		}
+		#background {
+			background-color: #0f0;
+			color: #0f0;
+			position: relative;
+		}
+		#polar-bear {
+			color: #fff;
+			position: absolute;
+			left: 400px;
+			border: 1px solid black;
+			padding: 9px;
+		}
+		#back-indent {
+			position: absolute;
+			background-color: #000;
+			color: #000;
+			text-indent: -400px;
+		}
+		#back-indent-2 {
+			position: absolute;
+			right: 10px;
+			border: 1px solid black;
+			padding: 9px;
+			text-indent: -120px;
+			background-color: #0f0;
+			color: #0f0;
+		}
+		#black {
+			background-color: #000000;
+		}
+		#green {
+			background-color: rgba(0,255,0,0);
+		}
+		.semiopaque {
+			background-color: rgba(0,255,0,0.25);
+		}
+	</style>
+</head>
+<body>
+	<div id="background">
+		<div></div>
+		<div id="easy">this should fail</div>
+		<div id="polar-bear">this should fail</div>
+		<div id="back-indent">this should pass</div>
+		<div id="back-indent-2">this should pass</div>
+		<div id="black">
+			<div id="green">this should pass</div>
 			<div class="semiopaque">
+				<div>this should pass</div>
 				<div class="semiopaque">
-					this should fail
+					<div class="semiopaque">
+						this should fail
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="offscreen">this should pass</div>
-</div>
+</body>
