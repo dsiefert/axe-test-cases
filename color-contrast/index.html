@@ -1,0 +1,26 @@
+<!doctype html>
+<title>Axe Test Cases: Color Contrast</title>
+<style>
+	div {
+		padding: 10px;
+		margin: 10px;
+		float: left;
+		min-height: 100px;
+		min-width: 100px;
+	}
+	#black {
+		background-color: #000000;
+	}
+	#green {
+		background-color: rgba(0,255,0,0);
+		color: #0f0;
+	}
+	#green2 {
+		background-color: rgba(0,255,0,0.5);
+		color: #0f0;
+	}
+</style>
+<div id="black">
+	<div id="green">this should pass</div>
+	<div id="green2">this should fail</div>
+</div>
