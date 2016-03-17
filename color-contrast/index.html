@@ -8,19 +8,38 @@
 		min-height: 100px;
 		min-width: 100px;
 	}
+	#background {
+		background-color: #0f0;
+		color: #0f0;
+	}
 	#black {
 		background-color: #000000;
 	}
 	#green {
 		background-color: rgba(0,255,0,0);
-		color: #0f0;
 	}
 	#green2 {
 		background-color: rgba(0,255,0,0.5);
-		color: #0f0;
+	}
+	#offscreen {
+		text-indent: -9999em;
+	}
+	.semiopaque {
+		background-color: rgba(0,255,0,0.25);
 	}
 </style>
-<div id="black">
-	<div id="green">this should pass</div>
-	<div id="green2">this should fail</div>
+<div id="background">
+	<div id="black">
+		<div id="green">this should pass</div>
+		<div id="green2">this should fail</div>
+		<div class="semiopaque">
+			<div>this should pass</div>
+			<div class="semiopaque">
+				<div class="semiopaque">
+					this should fail
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="offscreen">this should pass</div>
 </div>
